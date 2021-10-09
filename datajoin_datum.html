@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <p></p>
+      <div></div>
+      <script>
+        /*
+        datum（）方法用于为HTML文档中的单个元素设置值。 一旦使用选择器选择元素，就会使用它。 
+        例如，我们可以使用select（）方法选择现有元素（p标签），然后使用datum（）方法设置数据。 设置数据后，我们可以更改所选元素的文本或添加新元素，并使用datum（）方法设置的数据分配文本。
+        */
+         d3.select("p")
+         .datum(50)
+         .text(function(d) { 
+            return "Used existing paragraph element and the data " + d + " is assigned."; 
+         });
+
+         //事实上，下面的datum和append两个函数可以位置互换
+         d3.select("div")
+         .datum(100)
+         .append("p")
+         .text(function(d) { 
+            return "Created new paragraph element and the data " + d + " is assigned."; 
+         });
+      </script>
+   </body>
+</html>

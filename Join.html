@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+      <style>
+         body { font-family: Arial; }
+      </style>
+   </head>
+   <body>
+      <ul id = "list1">
+        <li></li>
+        <li></li>
+      </ul>
+      <ul id = "list">
+        <li></li>
+        <li></li>
+      </ul>
+      <input type = "button" name = "remove" value = "Remove fourth and fifth values" 
+         onclick = "javascript:remove()" />
+      <script>
+        //尽管数据集有五个项目，因此可以映射到文档的五个元素。 
+        //但list1的ul中只有两个li，因此只映射到两个元素
+        d3.select("#list1").selectAll("li")
+          .data([10, 20, 30, 25, 15])//data()是用来绑定数据到选择的DOM元素上.这样以后，就可以针对这些数据做一些相关操作
+          .text(function(d) { return d; });
+
+        d3.select("#list").selectAll("li")
+          .data([10, 20, 30, 25, 15])
+          .text(function(d) //text（）方法中的函数用于获取li元素映射数据
+              { return "This is pre-existing element and the value is " + d; })
+          .enter()          //enter（）方法提供对剩余数据的访问（未映射到现有元素）
+          .append("li")     //append（）方法用于从相应数据创建新元素，这里我们创建新的li
+          .text(function(d) 
+              { return "This is dynamically created element and the value is " + d; });
+        
+        //这一个remove函数被按钮绑定，点击后，选中的这几个会被动态删除
+        function remove() {
+          d3.select("#list").selectAll("li")
+          .data([1,2,3])  //这里其实是给五个Li的前三个重新绑定了数据
+          .exit()   //exit()用于处理从数据集中动态删除的数据项，也就是未能绑定到数据的dom元素
+          .remove() 
+          //使用exit（）和remove（）方法从数据集及其对应的li中删除了未绑定到数据的第四、五两项。官网说法有误
+        }
+        /*
+        在d3官方文档中，对于exit和remove两方法定义如下：
+        selection.exit - get the exit selection (elements missing data).
+        selection.remove - remove elements from the document.
+        */
+      </script>
+   </body>
+</html>
