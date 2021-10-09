@@ -4,8 +4,27 @@
       <script src = "https://d3js.org/d3.v4.min.js"></script>
    </head>
    <body>
+		<!--将SVG视为画布，我们可以在其上绘制不同的形状。 首先，让我们创建一个SVG标记 
+         默认单位为像素--->
+      <div class="svg-alignment">
+         <svg width = "500" height="500">
+            <!-- 绘制一个矩形rectangle-->
+            <rect x = "0" y = "0" width = "300" height = "200"></rect>
+         </svg>
+
+         <svg width = "500" height = "500">
+            <rect x = "0" y = "0" width = "300" height = "200" fill = "yellow"></rect>
+         </svg>
+         <!--使用两个不同高度的svg标签，可以发现这两个画布是默认底部对齐，我们这里添加一下父级标签样式，更改对齐方式-->
+		</div>
       <script>
          // write your d3 code here.. 
       </script>
    </body>
+<style>
+.svg-alignment{
+   vertical-align: top;/*顶端对齐*/
+   text-align: center;/*水平居中对齐*/
+}
+</style>
 </html>
