@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <h3>Simple transitions</h3>
+      <script>
+          //在这里，我们选择了body元素，然后通过调用transition（）方法开始转换。 然后，我们已指示将背景颜色从当前颜色转换为light blue 。
+         d3.select("body").transition().style("background-color", "lightblue");
+         setInterval(()=>{
+             d3.select("body").transition().style("background-color", "gray");
+             //5s后变灰
+         },5000);
+      </script>
+   </body>
+</html>

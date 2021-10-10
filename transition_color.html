@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <h3>Simple transitions</h3>
+      <div>THIS IS A DIV</div>
+      <script>
+         d3.select("body").style("background-color", "lightblue") 
+         // make the background-color lightblue
+
+         //如果我们不适应transition(过渡)和duration(持续时间)来平滑过渡，那么变化将是瞬间产生的
+         d3.select("body").transition().style("background-color", "gray").duration(5000);
+         //duration（）方法允许属性更改在指定的持续时间内平滑发生
+         /*
+         在指定的 selection 上返回指定的 name 的过渡。如果没有指定 name 则会使用 null。新的过渡仅仅与其他相同名字的过渡相排斥。
+         若 name 是一个 transition 实例，则返回的过渡与指定的过渡具有相同的 id 和 name。如果已经选中的元素上已经存在相同 id 和 name 的过渡，
+         则返回该元素已有的过渡。否则，返回的过渡的时间会从已经选中的每个选定元素的具有相同 id 的最近祖先继承
+         */
+         //delay（）方法允许在一段时间之后进行转
+         d3.selectAll("h3").transition().style("color","rgb(0,150,120)").delay(4000).duration(5000);
+
+         /*
+在d3的v3版本中，
+transition.each(function)
+为过渡中的每个选中的元素调用指定的 function，并传递当前元素 d 以及索引 i，函数内部 this 指向当前 DOM 元素。这个方法可以被用来为每个选中的元素调用任意代码，
+并且创建了一个能访问当前元素父节点和子节点数据的上下文。等价于 selection.each (opens new window)。
+iowiki上的原示例代码为：https://iowiki.com/d3js/d3js_animation.html
+d3.select("body")
+   .transition()
+   .delay(200)
+   .each("start", function() { d3.select(this).style("color", "green"); })
+   .style("color", "red");
+
+   但是会报错：t.call is not a function
+   原因及解决方案可见：https://www.it1352.com/1016965.html
+         */
+         d3.select("div")
+            .transition()
+            .delay(7000)
+            .on("start", function() { d3.select(this).style("color", "green"); })
+            .style("color", "red");
+         
+      </script>
+   </body>
+</html>
