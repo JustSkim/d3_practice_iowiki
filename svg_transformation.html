@@ -1,0 +1,70 @@
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <svg width = "300" height = "300">
+        <!--我们在原本的位置上画一个红色矩形便于比较-->
+        <rect x = "20" 
+        y = "20"
+        width = "60"
+        height = "60"
+        fill = "red"></rect>
+          <!--
+SVG引入了一个新属性， transform为支持转换。 可能的值是以下一项或多项，
+Translate - 它有两个选项， tx沿x轴平移， ty沿y轴平移。 例如 - 翻译（30 30）。
+Rotate - 它有三个选项， angle指旋转角度， cx和cy指的是x和y轴旋转的中心。 如果未指定cx和cy ，则默认为坐标系的当前原点。 例如 - 旋转（60）。
+Scale - 它有两个选项， sx沿x轴的比例因子， sy沿y轴的比例因子。 这里， sy是可选的，如果没有指定，则它取sx的值。 例如 - 比例（10）。
+Skew (SkewX and SkewY) - 只需一个选项; skew-angle指的是SkewX沿x轴的角度和SkewY沿y轴的角度。 例如 - skewx（20）。
+          -->
+         <rect x = "20" 
+            y = "20"
+            width = "60"
+            height = "60"
+            fill = "green"
+            transform = "translate(30 30)">
+         </rect>
+      </svg>
+
+      <!--可以使用空格作为分隔为单个SVG元素指定多个转换。 如果指定了多个值，则将按指定的顺序逐个应用转换。-->
+      <svg width = "300" height = "300" style="border:2px solid black">
+        <rect x = "0" 
+           y = "0" 
+           width = "60" 
+           height = "60" 
+           fill = "green"  
+           transform = "translate(60 60) rotate(45)">
+           <!--fill属性代表填充-->
+        </rect>
+     </svg>
+
+     <!--转换也可以应用于SVG组元素。 这使得能够转换SVG中定义的复杂图形，如下所述。-->
+     <svg style="border:2px solid black">
+        <g>
+            <rect x = "20" 
+               y = "20" 
+               width = "60" 
+               height = "30" 
+               fill = "gray">
+            </rect>
+            <circle cx = "0" 
+               cy = "0" 
+               r = "30" 
+               fill = "blue"/>
+         </g>
+
+        <g transform = "translate(60,60) rotate(30)">
+            <rect x = "20" 
+               y = "20" 
+               width = "60" 
+               height = "30" 
+               fill = "green">
+            </rect>
+            <circle cx = "0" 
+               cy = "0" 
+               r = "30" 
+               fill = "red"/>
+         </g>
+     </svg>
+   </body>
+</html>

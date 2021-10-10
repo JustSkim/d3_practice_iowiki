@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+      <style>
+         body { font-family: Arial; }
+      </style>
+   </head>
+   <body>
+      <div id = "svgcontainer">
+          <!--创建一个容器来保存SVG图像-->
+      </div>
+
+      <div id="svgcontainer-rectangle"></div>
+      <div id="svgcontainer-circle"></div>
+      <script language = "javascript">
+        //我们也可以在脚本中使用svg画布
+         var width = 300;
+         var height = 300;
+         //选中相应对应的div作为svg图像的容器
+         var svg = d3.select("#svgcontainer")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+        //使用select（）方法选择到SVG容器，然后在下面使用append（）方法往其中注入SVG元素——line，并用attr（）和style（）方法添加属性和样式。
+        //可以发现，该div中多了一个svg画布标签
+         svg.append("line")
+            .attr("x1", 100)
+            .attr("y1", 100)
+            .attr("x2", 200)
+            .attr("y2", 200)
+            .style("stroke", "rgb(255,0,0)")
+            .style("stroke-width", 2);
+        //svg中多了一个line标签
+        /*
+        注意，<svg> 是一个被html标签，标记定义 SVG 图形的容器。
+        但是svg标签中的circle和line等标签
+        */
+
+        //动态创建一个矩形
+         //Create SVG element
+         var svg = d3.select("#svgcontainer-rectangle")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+         //Create and append rectangle element
+         svg.append("rect")
+            .attr("x", 20)
+            .attr("y", 20)
+            .attr("width", 200)
+            .attr("height", 100)
+            .attr("fill", "green");
+        //动态创建一个圆圈
+        //Create SVG element
+        var svg = d3.select("#svgcontainer-circle")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+         //Append circle 
+         svg.append("circle")
+            .attr("cx", 200)
+            .attr("cy", 50)
+            .attr("r", 20)
+            .attr("fill", "green");
+            //cx 和 cy 属性定义圆点的 x 和 y 坐标。如果省略 cx 和 cy，圆的中心会被设置为 (0, 0)
+      </script>
+   </body>
+</html>

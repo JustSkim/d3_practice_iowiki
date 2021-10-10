@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+      <style>
+         body { font-family: Arial; }
+      </style>
+   </head>
+   <body>
+      <div id = "svgcontainer">
+         <!--svg标签启动SVG图像，它具有宽度和高度作为属性。 SVG格式的默认单位是pixel -->
+         <svg width = "300" height = "300">
+            <!-- line标签绘制一条线，其属性x1, y1指的是起始点， x2, y2指的是终点。 
+                style属性使用stroke和stroke-width样式设置线条的颜色和粗细。
+                stroke - 线条的颜色。   stroke-width - 线的粗细。
+            -->
+            <line x1 = "100" y1 = "100" 
+               x2 = "200" y2 = "200" style = "stroke:rgb(255,0,0);
+               stroke-width:2"/>
+         </svg>
+      </div>
+      <p></p>
+      <p></p>
+   </body>
+</html>
