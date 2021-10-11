@@ -39,3 +39,11 @@
 > - 易于构建图表组件。
 > - DOM操作。
 
+
+
+几个关于d3.csv跨域问题的解决方案：
+https://www.cnblogs.com/shuaiwang/p/4608378.html
+
+https://blog.csdn.net/weixin_30535913/article/details/101360851
+
+https://blog.csdn.net/weixin_44576593/article/details/117842849

@@ -1,0 +1,63 @@
+<html>
+   <head>
+       <title>circle chart</title>
+       <!--使用D3在SVG中创建一个圆形图-->
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <script>
+         var width = 400;
+         var height = 400;
+         var data = [10, 20, 30];   //数据元素数组。
+         var colors = ['green', 'purple', 'yellow'];
+         var svg = d3
+            .select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);    //在D3中添加SVG元素
+        
+        console.log(svg.selectAll("div"))
+        console.log(svg.selectAll("g"))
+
+         var g = svg.selectAll("g")     // 创建用于保持圆圈的组元素
+        g = g.data(data)
+        console.log("绑定数据后g = ",g);
+        console.log("此时 g._groups[0] = ",g._groups[0]);
+        g = g.enter()
+            .append("g")
+            .attr("transform", function(d, i) {
+               return "translate(0,0)";
+            })
+/*
+数据绑定的时候可能出现 DOM 元素与数据元素个数不匹配的问题,
+enter 操作用来添加新的 DOM 元素
+使用 enter 和 append 操作来补齐 DOM 元素:
+*/
+            console.log("补全后 g = ",g);
+            console.log("此时 g._groups[0] = ",g._groups[0]);
+            console.log("此时 g._groups[0][0] = ",g._groups[0][0],"\n其类型为：",typeof g._groups[0][0]);
+         g.append("circle").attr("cx", function(d, i) {
+            return i*75 + 50;
+         })
+         .attr("cy", function(d, i) {
+            return 75;
+         })
+         .attr("r", function(d) {
+            return d*1.5;
+         })
+         .attr("fill", function(d, i){
+            return colors[i];
+         })
+         console.log("g = ",g);
+         g.append("text").attr("x", function(d, i) {
+            return i * 75 + 25;
+         })
+         .attr("y", 80)
+         .attr("stroke", "teal")
+         .attr("font-size", "10px")
+         .attr("font-family", "sans-serif").text(function(d) {
+            return d;
+         });
+      </script>
+   </body>
+</html>

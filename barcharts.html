@@ -52,7 +52,7 @@ Barheight - 这是水平条的静态高度。
         //宽度是（输入的数据值d*比例因子scaleFactor），高度是（条形高度barHeight=30px - 边距为1）
 
 //最后一步，我们在每个跳上显示数据
-//宽度定义为（数据值*比例因子）。 文本元素不支持填充或边距。 出于这个原因，我们需要给它一个“dy”偏移量。 这用于垂直对齐文本。
+//宽度定义为（数据值*比例因子）。 由于文本元素不支持填充或边距，我们需要给它一个“dy”偏移量，用于垂直对齐文本。
          bar.append("text")
             .attr("x", function(d) { console.log("d is ",d);return (d*scaleFactor); })//这里函数中传入的参数d其实就是绑定数组data中对应位置的元素
             .attr("y", barHeight/2)

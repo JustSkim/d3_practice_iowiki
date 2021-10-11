@@ -4,6 +4,8 @@
       <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
    </head>
    <body>
+      <h1> this is h1</h1>
+      <h1> this is h1</h1>
       <div class="myclass1">
          H World!    
       </div>
@@ -43,6 +45,20 @@ span.text("from D3.js");
 
          //selectAll（）方法用于选择HTML文档中的多个元素。 select方法选择第一个元素，但selectAll方法选择与特定选择器字符串匹配的所有元素。 如果选择匹配none，则返回空选择。 
          d3.selectAll("span").attr("style", "color: red");
+
+         console.log(typeof(d3.selectAll("h1")),d3.selectAll("h1"))  //object
+         //可以看到，选中的结果是一个对象 
+         console.log("length: ",d3.selectAll("h1").length); //undefined
+         console.log("[0]: ",d3.selectAll("h1")[0]);        //undefined
+
+         console.log("_groups type: ",typeof d3.selectAll("h1")._groups);  
+         //依然是object,
+         console.log("_groups.length: ",d3.selectAll("h1")._groups.length);//对象的长度为1
+         
+         // 类型为一个对象Object ————   NodeList 对象是节点的集合，但不是一个数组！
+         console.log("_groups.[0]: ",d3.selectAll("h1")._groups[0]);
+         console.log("_groups.[0].length: ",d3.selectAll("h1")._groups[0].length);  //2
+         console.log(d3.selectAll("h2"))
       </script>
    </body>
 </html>
