@@ -1,0 +1,63 @@
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+      <!--SVG中创建条形图，可以使用条形和text elements的rect elements text elements来显示与条形对应的数据值。-->
+      <style>
+         svg rect {
+            fill: gray;
+         }
+         svg text {
+            fill: yellow;
+            font: 12px sans-serif;
+            text-anchor: end;
+            /*文本锚用于将文本定位到条的右端。*/
+         }
+      </style>
+   </head>
+   <body>
+      <script>
+         var data = [10, 5, 12, 15];
+         /*
+添加三个变量
+Width - SVG的宽度。
+Scalefactor - 缩放到屏幕上可见的像素值。
+Barheight - 这是水平条的静态高度。
+         */
+         var width = 300 
+            scaleFactor = 20, 
+            barHeight = 30;
+/*
+首先选择文档正文，创建一个新的SVG元素然后追加它。 我们将在此SVG元素中构建条形图。 
+然后，设置SVG的宽度和高度。 高度计算为条形高度*数据值的数量。
+*/
+         var graph = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", barHeight * data.length);
+//我们已经将条形高度barHeight设为30，数据数组长度为4.然后SVG高度计算为barheight * datalength，即120 px
+         
+//每个栏内部对应一个元素。 因此，我们创建组元素。 我们的每个组元素都需要一个位于另一个之下，
+//以构建一个水平条形图。 让我们采用转换公式索引*条高度。
+        var bar = graph.selectAll("g")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("transform", function(d, i) {
+               return "translate(0," + i * barHeight + ")";
+            });
+         bar.append("rect").attr("width", function(d) {
+            return d * scaleFactor;
+         })
+         .attr("height", barHeight - 1);
+        //宽度是（输入的数据值d*比例因子scaleFactor），高度是（条形高度barHeight=30px - 边距为1）
+
+//最后一步，我们在每个跳上显示数据
+//宽度定义为（数据值*比例因子）。 文本元素不支持填充或边距。 出于这个原因，我们需要给它一个“dy”偏移量。 这用于垂直对齐文本。
+         bar.append("text")
+            .attr("x", function(d) { console.log("d is ",d);return (d*scaleFactor); })//这里函数中传入的参数d其实就是绑定数组data中对应位置的元素
+            .attr("y", barHeight/2)
+            .attr("dy", ".35em")
+            .text(function(d) { return d; });
+      </script>
+   </body>
+</html>
