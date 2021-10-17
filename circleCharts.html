@@ -24,9 +24,9 @@
         console.log("绑定数据后g = ",g);
         console.log("此时 g._groups[0] = ",g._groups[0]);
         g = g.enter()
-            .append("g")
+            .append("g")      // 将组元素添加到我们的页面
             .attr("transform", function(d, i) {
-               return "translate(0,0)";
+               return "translate(0,0)";   //translate用于相对于原点定位元素。
             })
 /*
 数据绑定的时候可能出现 DOM 元素与数据元素个数不匹配的问题,
@@ -37,20 +37,26 @@ enter 操作用来添加新的 DOM 元素
             console.log("此时 g._groups[0] = ",g._groups[0]);
             console.log("此时 g._groups[0][0] = ",g._groups[0][0],"\n其类型为：",typeof g._groups[0][0]);
          g.append("circle").attr("cx", function(d, i) {
-            return i*75 + 50;
+            return i*75 + 50; //使用每个圆的中心的x坐标。 我们将圆的索引乘以75并在圆之间添加50的填充
          })
          .attr("cy", function(d, i) {
-            return 75;
+            return 75;     //设置每个圆的中心的y坐标
          })
          .attr("r", function(d) {
             return d*1.5;
          })
          .attr("fill", function(d, i){
+            //半径乘以数据值以及常数“1.5”以增加圆的大小
             return colors[i];
          })
          console.log("g = ",g);
+
+/*
+有三个g标签，每个g标签中已有一个circle标签，下面的添加操作将会在每个g标签中添加一个text标签，
+但该text标签的二维位置(x,y) 依然是基于整个svg来确定的，所以和每个圆的相互位置无关
+*/
          g.append("text").attr("x", function(d, i) {
-            return i * 75 + 25;
+            return i * 75 + 25;//分别是25,100,175
          })
          .attr("y", 80)
          .attr("stroke", "teal")

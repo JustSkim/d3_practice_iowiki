@@ -19,6 +19,7 @@
    <body>
       <svg width = "400" height = "400"></svg>
       <script>
+         //创建甜甜圈图，与饼图编码相同，但是内半径略有变化
          var svg = d3.select("svg"),
             width = svg.attr("width"),
             height = svg.attr("height"),
@@ -31,12 +32,23 @@
          var pie = d3.pie().value(function(d) { 
             return d.percent; 
          });
+
          var path = d3.arc()
             .outerRadius(radius)
             .innerRadius(100);
          var label = d3.arc()
             .outerRadius(radius)
             .innerRadius(radius - 80);
+/*
+我们跟饼状图中对应部分代码对比一下：
+         var path = d3.arc()
+            .outerRadius(radius - 10).innerRadius(0);
+         //该弧将被设置为路径元素。 计算出的半径设置为outerradius，而innerradius设置为0
+         var label = d3.arc()
+            .outerRadius(radius).innerRadius(radius - 80);
+         //这里的label, 通过提供半径在饼形楔中添加标签
+*/
+
          d3.csv("populations.csv", function(error, data) {
             if (error) {
                throw error;
