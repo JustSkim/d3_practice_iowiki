@@ -1,0 +1,48 @@
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <h3>D3 collection API</h3>
+      <div>
+        Maps API
+        地图包含基于键和值对的值。 每个键和值对称为条目。 地图仅包含唯一键。 根据密钥搜索，更新或删除元素非常有用。 我们将详细介绍各种Maps API方法。
+        <br/>
+        d3.map([object[, key]]) - 此方法用于创建新地图。 Object用于复制所有可枚举属性。
+        <br/>
+        map.has(key) - 此方法用于检查map是否具有指定键字符串的条目。
+        <br/>
+        map.get(key) - 此方法用于返回指定键字符串的值。
+        <br/>
+        map.set(key, value) - 此方法用于设置指定键字符串的值。 如果映射先前具有相同键字符串的条目，则旧条目将替换为新值。
+        <br/>
+        map.remove(key) - 用于删除映射条目。 如果未指定密钥，则返回false。
+        <br/>
+        map.clear() - 删除此地图中的所有条目。
+        <br/>
+        map.keys() - 返回此映射中每个条目的字符串键数组。
+        <br/>
+        map.values() - 返回此映射中每个条目的值数组。
+        <br/>
+        map.entries() - 返回此映射中每个条目的键值对象数组。
+        <br/>
+        (x) map.each(function) - 此方法用于为地图中的每个条目调用指定的函数。
+        <br/>
+        (xi) map.empty() - 当且仅当此映射具有零条目时返回true。
+        <br/>
+        (xii) map.size() - 返回此映射中的条目数。
+      </div>
+      <script>
+         var month = d3.map([{name: "jan"}, {name: "feb"}], 
+         function(d) { return d.name; });
+         console.log(month.get("jan")); // {"name": "jan"}
+         console.log(month.get("apr")); // undefined
+         console.log(month.has("feb")); // true
+         var map =  d3.map().set("fruit", "mango");
+         console.log(map.get("fruit")); // mango
+         console.log(map.remove("fruit")); // remove key and return true.
+         console.log(map.size());    // size is 0 because key removed.
+         console.log(map.empty());   // true
+      </script>
+   </body>
+</html>

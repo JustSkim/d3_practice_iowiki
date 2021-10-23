@@ -1,0 +1,23 @@
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <h3>D3 collection API</h3>
+      <div>
+        Object API是重要的数据类型之一。 它支持以下方法 -
+
+        d3.keys(object) - 此方法包含对象属性键，并返回属性名称的数组。
+        
+        d3.values(object) - 此方法包含对象值并返回属性值数组。
+        
+        d3.entries(object) - 此方法用于返回包含指定对象的键和值的数组。 每个条目都是一个具有键和值的对象。
+      </div>
+      <script>
+         var month = {"jan": 1, "Feb": 2, "mar": 3, "apr": 4};
+         console.log(d3.keys(month));
+         console.log(d3.values(month));
+         console.log(d3.entries(month));
+      </script>
+   </body>
+</html>

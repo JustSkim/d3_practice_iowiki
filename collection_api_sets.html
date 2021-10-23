@@ -1,0 +1,35 @@
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <h3>D3 collection API</h3>
+      <div>
+        Set是一个不能包含重复元素的Collection。 它模拟了数学集抽象。 让我们详细介绍各种Sets API方法。
+        <br/>
+        d3.set([array[, accessor]]) - 此方法用于创建新集。 Array用于添加字符串值。 访问者是可选的。
+        <br/>
+        set.has(value) - 此方法用于检查集合是否具有指定值字符串的条目。
+        <br/>
+        set.add(value) - 用于将指定的值字符串添加到集合中。
+        <br/>
+        set.remove(value) - 用于删除包含指定值字符串的集合。
+        <br/>
+        set.clear() - 从此集中删除所有值。
+        <br/>
+        set.values() - 此方法用于将值数组返回到集合。
+        <br/>
+        set.empty() - 当且仅当此set具有零值时返回true。
+        <br/>
+        set.size() - 返回此集合中的值的数量。
+      </div>
+      <script>
+         var fruits =  d3.set().add("mango")
+          .add("apple").add("orange");
+         console.log(fruits.has("grapes")); // return false.
+         console.log(fruits.remove("apple")); //true
+         console.log(fruits.size());    // size is 2
+         console.log(fruits.empty());   // true
+      </script>
+   </body>
+</html>

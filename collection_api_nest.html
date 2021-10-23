@@ -1,0 +1,48 @@
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+   </head>
+   <body>
+      <h3>D3 Nest API</h3>
+      <textarea>
+        嵌套API
+        嵌套API包含数组中的元素，并以分层树结构执行。 让我们详细介绍各种Nests API方法。
+        
+        d3.nest() - 此方法用于创建新的嵌套。
+        
+        nest.key(key) - 此方法用于初始化新的键功能。 此函数用于调用输入数组中的每个元素并返回组中的元素。
+        
+        nest.sortKeys(comparator) - 此方法用于对指定比较器中的键进行排序。 函数定义为d3.ascending或d3.descending。
+        
+        nest.sortValues(comparator) - 此方法用于对指定比较器中的值进行排序。 比较器函数对叶元素进行排序。
+        
+        nest.map(array) - 此方法用于应用指定的数组并返回嵌套的映射。 返回的映射中的每个条目对应于第一个键函数返回的不同键值。 输入值取决于已注册的键功能的数量。
+        
+        nest.object(array) - 此方法用于将嵌套操作符应用于指定的数组并返回嵌套对象。
+        
+        nest.entries(array) - 此方法用于将nest运算符应用于指定的数组并返回键值条目数组。
+      </textarea>
+      <script>
+         var data = [
+            {
+               "color" : "red",
+               "key" : 1
+            },
+            {
+               "color" : "green",
+               "key" : 2
+            },
+            {
+               "color" : "blue",
+               "key" : 75
+            }
+         ]
+         var nest =  d3.nest()
+            .key(function (d) { return d.color; })
+            .entries(data);
+        console.log(nest);
+         var filter = nest.filter(function (d) { return d.key === 'red' })
+         console.log(filter);
+      </script>
+   </body>
+</html>
